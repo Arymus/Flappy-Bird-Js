@@ -18,7 +18,6 @@ function randomizeObstacles() {
         console.log("Bottom log successful! Bottom: " + obstacleDiv.style.bottom);
     }
 
-    obstacleDiv.className = "obstacle";
     obstacleDiv.style.height = `${obstacle.height}px`;
     obstacleDiv.style.width = "10px";
     obstacleDiv.style.backgroundColor = "green";
@@ -38,11 +37,20 @@ start.addEventListener("click", () => {
     randomizeObstacles();
 })
 
+while (bird.style.bottom > 0) {
+    bird.style.top += 1;
+}
+
 document.addEventListener("keydown", event => {
     if (event.key === " ") {
         bird.style.backgroundImage = "url('flappysprite2.png')";
     }
-
     bird.style.top = `${bird.style.top + 1}px`;
-})
+});
+
+document.addEventListener("keyup", event => {
+    if (event.key === " ") {
+        bird.style.backgroundImage = "url"('flappysprite1.png')";
+    }
+});
 

@@ -21,6 +21,7 @@ function randomizeObstacles() {
     obstacleDiv.className = "obstacle";
     obstacleDiv.style.height = `${obstacle.height}px`;
     obstacleDiv.style.width = "10px";
+    obstacleDiv.style.backgroundColor = "green";
     document.querySelector(".gameFrame").append(obstacleDiv);
 
 }

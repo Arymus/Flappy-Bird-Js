@@ -45,7 +45,7 @@ document.addEventListener("keydown", event => {
     if (event.key === " ") {
         bird.style.backgroundImage = "url('flappysprite2.png')";
     }
-    bird.style.top = `${bird.style.top + 1}px`;
+    bird.style.top = `${bird.style.top - 1}px`;
 });
 
 document.addEventListener("keyup", event => {

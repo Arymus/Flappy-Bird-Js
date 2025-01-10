@@ -12,14 +12,12 @@ function randomizeObstacles() {
 
     if (obstacle.position == 1) {
         obstacleDiv.style.top = 0;
-        console.log("Top log successful! Top: " + obstacleDiv.style.top);
     } else if (obstacle.position == 0) {
         obstacleDiv.style.bottom = 0;
-        console.log("Bottom log successful! Bottom: " + obstacleDiv.style.bottom);
     }
 
     obstacleDiv.style.height = `${obstacle.height}px`;
-    obstacleDiv.style.width = "10px";
+    obstacleDiv.style.width = "20px";
     obstacleDiv.style.backgroundColor = "green";
     document.querySelector(".gameFrame").append(obstacleDiv);
 
@@ -37,20 +35,30 @@ start.addEventListener("click", () => {
     randomizeObstacles();
 })
 
-while (bird.style.bottom > 0) {
-    bird.style.top += 1;
+let birdTop = bird.style.top.replace("px", "");
+birdTop = parseInt(birdTop);
+
+while (birdTop > 0) {
+    setInterval(() => {
+        birdTop -= 1;
+        bird.style.top = `${birdTop}px`;
+    }, 1000);
+    console.log(birdTop);
 }
 
 document.addEventListener("keydown", event => {
     if (event.key === " ") {
         bird.style.backgroundImage = "url('flappysprite2.png')";
     }
-    bird.style.top = `${bird.style.top - 1}px`;
+    // Make the bird rise one pixel when the space bar is clicked
+    bird.style.top = `${birdTop - 1}px`;
+
+    console.log(bird.style.top);
 });
 
 document.addEventListener("keyup", event => {
-    if (event.key === " ") {
-        bird.style.backgroundImage = "url"('flappysprite1.png')";
+    if (event.code === "Space") {
+        // When the user releases the space bar, revert back to the original sprite
+        bird.style.backgroundImage = "url('flappysprite1.png')";
     }
 });
-
